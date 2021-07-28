@@ -14,48 +14,87 @@ const promptUser = () => {
     },
     {
       type: 'input',
-      name: 'Project Description',
-      message: 'Please enter a description of your project',
+      name: 'Description',
+      message: 'Please enter a description of your project.',
     },
     {
       type: 'input',
-      name: 'Installation Instructions',
-      message: 'Please enter description of installation instructions',
+      name: 'Installation',
+      message: 'Please enter description of installation instructions.',
     },
     {
       type: 'input',
-      name: 'Usual Information',
-      message: 'Please enter a description of the usage Information',
+      name: 'Usage',
+      message: 'Please enter a description of the usage Information.',
     },
     {
       type: 'input',
-      name: 'Test Instructions',
-      message: 'Please enter a description of Test Instructions',
+      name: 'Test',
+      message: 'Please enter a description of Test Instructions.',
     },
     {
-      type: 'list',
+      type: 'checkbox',
       name: 'License',
-      message: 'Choose a license for your application',
+      message: 'Choose a license for your application.',
+      choices: [
+            'MIT',
+            'ISC',
+            'Apache',
+            'Domain'
+      ]
     },
     {
       type: 'input',
       name: 'GitHub',
-      message: 'Please enter your GitHub Username',
+      message: 'Please enter your GitHub Username.',
     },
     {
       type: 'input',
-      name: 'Email Address',
-      message: 'Please enter your Email Address',
+      name: 'Email',
+      message: 'Please enter your Email Address.',
     },
   ]);
 };
 
+let generateResponse = (response) => {
+  return `${response.title}
 
+  # Table of Contents
+
+  - Description (#description)
+  - Installation (#installation)
+  - Usage (#usage)
+  - Test (#test)
+  - License (#license)
+  - GitHub (#github)
+  - Email (#email)
+
+  # Description :
+  [License] (![GitHub all releases](https://img.shields.io/github/downloads/kgomez1990/KarimReadMeGenerator/total?logo=Github&style=flat-square))
+
+
+  ${response.description}
+
+  #Installation:
+  ${response.installation}
+
+  #Usage:
+  ${response.usage}
+
+  #Test:
+  ${response.test}
+
+  #GitHub:
+  ${response.github}
+
+  #email:
+  ${response.email} 
+`};
 
 const init = () => {
   promptUser()
-    .then((answers) => writeFileAsync('Readme.md', generateHTML(answers)))
-    .then(() => console.log('Successfully wrote to index.html'))
+    .then((answers) => writeFileAsync('Readme.md', readMe))
+    .then(() => console.log('Successfully wrote to ReadMe.md'))
     .catch((err) => console.error(err));
 };
 
