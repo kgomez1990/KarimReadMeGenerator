@@ -2,7 +2,7 @@
 
 ## Description
 
-This ReadMe Generator builds a custom readme based on the responses you give it. Please see video below for virtual experience! I love this!
+This ReadMe Generator builds a custom readme based on the responses you give it. Please see video below for virtual experience! 
 
 ## Demo Video (w/audio)
 https://drive.google.com/file/d/1AuVV4gZK4SpPlux7ljIsQzUxChb7e4cX/view
